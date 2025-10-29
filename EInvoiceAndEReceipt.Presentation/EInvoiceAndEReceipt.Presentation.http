@@ -1,0 +1,6 @@
+@EInvoiceAndEReceipt.Presentation_HostAddress = http://localhost:5057
+
+GET {{EInvoiceAndEReceipt.Presentation_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

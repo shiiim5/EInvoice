@@ -1,0 +1,14 @@
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Data/bin/Debug/net9.0/EInvoiceAndEReceipt.Data.deps.json
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Data/bin/Debug/net9.0/EInvoiceAndEReceipt.Data.dll
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Data/bin/Debug/net9.0/EInvoiceAndEReceipt.Data.pdb
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Data/obj/Debug/net9.0/EInvoiceAndEReceipt.Data.GeneratedMSBuildEditorConfig.editorconfig
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Data/obj/Debug/net9.0/EInvoiceAndEReceipt.Data.AssemblyInfoInputs.cache
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Data/obj/Debug/net9.0/EInvoiceAndEReceipt.Data.AssemblyInfo.cs
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Data/obj/Debug/net9.0/EInvoiceAndEReceipt.Data.csproj.CoreCompileInputs.cache
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Data/obj/Debug/net9.0/EInvoiceAndEReceipt.Data.dll
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Data/obj/Debug/net9.0/refint/EInvoiceAndEReceipt.Data.dll
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Data/obj/Debug/net9.0/EInvoiceAndEReceipt.Data.pdb
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Data/obj/Debug/net9.0/ref/EInvoiceAndEReceipt.Data.dll
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Data/bin/Debug/net9.0/EInvoiceAndEReceipt.Data.runtimeconfig.json
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Data/obj/Debug/net9.0/EInvoiceAndEReceipt.Data.csproj.AssemblyReference.cache
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Data/obj/Debug/net9.0/EInvoiceAndEReceipt.Data.genruntimeconfig.cache

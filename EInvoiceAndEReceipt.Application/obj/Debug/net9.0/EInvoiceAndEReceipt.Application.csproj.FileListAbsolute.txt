@@ -1,0 +1,15 @@
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Application/bin/Debug/net9.0/EInvoiceAndEReceipt.Application.deps.json
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Application/bin/Debug/net9.0/EInvoiceAndEReceipt.Application.dll
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Application/bin/Debug/net9.0/EInvoiceAndEReceipt.Application.pdb
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Application/bin/Debug/net9.0/EInvoiceAndEReceipt.Data.dll
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Application/bin/Debug/net9.0/EInvoiceAndEReceipt.Data.pdb
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Application/obj/Debug/net9.0/EInvoiceAndEReceipt.Application.csproj.AssemblyReference.cache
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Application/obj/Debug/net9.0/EInvoiceAndEReceipt.Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Application/obj/Debug/net9.0/EInvoiceAndEReceipt.Application.AssemblyInfoInputs.cache
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Application/obj/Debug/net9.0/EInvoiceAndEReceipt.Application.AssemblyInfo.cs
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Application/obj/Debug/net9.0/EInvoiceAndEReceipt.Application.csproj.CoreCompileInputs.cache
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Application/obj/Debug/net9.0/EInvoice.A2D008B1.Up2Date
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Application/obj/Debug/net9.0/EInvoiceAndEReceipt.Application.dll
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Application/obj/Debug/net9.0/refint/EInvoiceAndEReceipt.Application.dll
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Application/obj/Debug/net9.0/EInvoiceAndEReceipt.Application.pdb
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Application/obj/Debug/net9.0/ref/EInvoiceAndEReceipt.Application.dll

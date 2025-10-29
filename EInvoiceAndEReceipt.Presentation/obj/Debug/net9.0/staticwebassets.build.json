@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "554IwDnGZ7M/prQdFTkWft5vhUGhFsyTl8wJOxVNzbQ=",
+  "Source": "EInvoiceAndEReceipt.Presentation",
+  "BasePath": "_content/EInvoiceAndEReceipt.Presentation",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
