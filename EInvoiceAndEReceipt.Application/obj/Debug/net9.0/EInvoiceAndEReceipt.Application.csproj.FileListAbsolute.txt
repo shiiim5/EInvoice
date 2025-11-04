@@ -13,3 +13,4 @@
 /home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Application/obj/Debug/net9.0/refint/EInvoiceAndEReceipt.Application.dll
 /home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Application/obj/Debug/net9.0/EInvoiceAndEReceipt.Application.pdb
 /home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Application/obj/Debug/net9.0/ref/EInvoiceAndEReceipt.Application.dll
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Application/obj/Debug/net9.0/EInvoiceAndEReceipt.Application.sourcelink.json

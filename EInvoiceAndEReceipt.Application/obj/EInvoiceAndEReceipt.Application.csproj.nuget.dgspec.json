@@ -48,6 +48,12 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -113,13 +119,29 @@
               "target": "Package",
               "version": "[9.0.10, )"
             },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
+            "Microsoft.EntityFrameworkCore.Design": {
               "target": "Package",
               "version": "[9.0.10, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
               "version": "[9.0.10, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.10, )"
+            },
+            "Microsoft.Extensions.Configuration.FileExtensions": {
+              "target": "Package",
+              "version": "[9.0.10, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[9.0.10, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.4, )"
             }
           },
           "imports": [
