@@ -9,6 +9,7 @@ namespace EInvoiceAndEReceipt.Data.Entities
 {
     public class TaxTotal
     {
+         [Key]
         public int _Id { get; set; }
         [ValidValues("TaxTypes.json")]
         public string TaxType { get; set; }

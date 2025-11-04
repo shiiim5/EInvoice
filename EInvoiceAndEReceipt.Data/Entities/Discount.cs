@@ -8,6 +8,7 @@ namespace EInvoiceAndEReceipt.Data.Entities
 {
     public class Discount
     {
+         [Key]
         public int _Id { get; set; }
         [Range(0, 100)]
         public Decimal Rate { get; set; }

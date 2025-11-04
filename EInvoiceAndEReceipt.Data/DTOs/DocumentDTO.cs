@@ -1,26 +1,18 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using EInvoiceAndEReceipt.Data.Validations;
+using EInvoiceAndEReceipt.Data.Entities;
 
-namespace EInvoiceAndEReceipt.Data.Entities
+namespace EInvoiceAndEReceipt.Data.DTOs
 {
-    public class Invoice
+    public class DocumentDTO
     {
-         [Key]
-        public int _Id { get; set; }
-        public Issuer Issuer { get; set; }
+          public Issuer Issuer { get; set; }
         public Receiver Receiver { get; set; }
-        [AllowedValues("i")]
 
-        public string DocumentType { get; set; }
- [AllowedValues("1.0")]
-        public string DocumentTypeVersion { get; set; }
+           public DateTime DateTimeIssued { get; set; }
 
-        public DateTime DateTimeIssued { get; set; }
-[ValidValues("ActivityCodes.json")]
         public string TaxpayerActivityCode { get; set; }
         public string InternalId { get; set; }
         public string? PurchaseOrderReference { get; set; }
@@ -40,6 +32,5 @@ namespace EInvoiceAndEReceipt.Data.Entities
         public Decimal TotalAmount { get; set; }
         public List<Signature> Signatures { get; set; } = new List<Signature>();
 public DateTime? ServiceDeliveryDate { get; set; }
-
     }
 }

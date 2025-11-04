@@ -8,6 +8,7 @@ namespace EInvoiceAndEReceipt.Data.Entities
 {
     public class Party
     {
+         [Key]
          public int _Id { get; set; }
         public string Id { get; set; }
         [AllowedValues("B", "P", "F")]

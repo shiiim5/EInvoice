@@ -10,6 +10,8 @@ namespace EInvoiceAndEReceipt.Data.Entities
     public class Value
     {
         private Decimal _AmountEGP;
+
+         [Key]
         public int _Id { get; set; }
         public string CurrencySold { get; set; }
 

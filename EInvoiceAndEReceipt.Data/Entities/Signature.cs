@@ -8,6 +8,7 @@ namespace EInvoiceAndEReceipt.Data.Entities
 {
     public class Signature
     {
+         [Key]
         public int _Id { get; set; }
         [AllowedValues("I","S")]
         public string Type { get; set; }

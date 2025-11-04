@@ -9,6 +9,7 @@ namespace EInvoiceAndEReceipt.Data.Entities
 {
     public class InvoiceLine
     {
+         [Key]
         public int _Id { get; set; }
         public string Description { get; set; }
         [AllowedValues("GS1","EGS")]

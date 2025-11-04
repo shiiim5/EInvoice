@@ -18,6 +18,7 @@ namespace EInvoiceAndEReceipt.Data.DbContext
         {
             base.OnModelCreating(modelBuilder);
             
+            
         }
 
       
