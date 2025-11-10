@@ -8,10 +8,10 @@ namespace EInvoiceAndEReceipt.Data.DTOs
 {
     public class DocumentDTO
     {
-          public Issuer Issuer { get; set; }
-        public Receiver Receiver { get; set; }
+        public IssuerDTO Issuer { get; set; }
+        public RecieverDTO Receiver { get; set; }
 
-           public DateTime DateTimeIssued { get; set; }
+        public DateTime DateTimeIssued { get; set; }
 
         public string TaxpayerActivityCode { get; set; }
         public string InternalId { get; set; }
@@ -20,8 +20,8 @@ namespace EInvoiceAndEReceipt.Data.DTOs
         public string? SalesOrderReference { get; set; }
         public string? SalesOrderDescription { get; set; }
         public string? ProformaInvoiceNumber { get; set; }
-        public Payment? Payment { get; set; }
-        public Delievry? Delievry { get; set; }
+        public PaymentDTO? Payment { get; set; }
+        public DelievryDTO? Delievry { get; set; }
         public List<InvoiceLine> InvoiceLines { get; set; } = new List<InvoiceLine>();
         public Decimal TotalSalesAmount { get; set; }
         public Decimal TotalDiscountAmount { get; set; }
@@ -31,6 +31,6 @@ namespace EInvoiceAndEReceipt.Data.DTOs
         public Decimal TotalItemsDiscountAmount { get; set; }
         public Decimal TotalAmount { get; set; }
         public List<Signature> Signatures { get; set; } = new List<Signature>();
-public DateTime? ServiceDeliveryDate { get; set; }
+        public DateTime? ServiceDeliveryDate { get; set; }
     }
 }

@@ -11,6 +11,6 @@ namespace EInvoiceAndEReceipt.Data.IRepositories
         public Task<bool> ExistsAsync(string InvoiceId);
         public Task<List<Invoice>> AddDocumentsAsync(IEnumerable<Invoice> invoices);
 
-        
+        public Task<List<Invoice>> GetAllInvoices();
     }
 }

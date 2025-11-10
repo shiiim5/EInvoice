@@ -1,0 +1,135 @@
+{
+  "SimpleFieldValidations": [
+  
+    {
+      "Name": "SalesTotalEquation",
+      "Level": "InvoiceLine",
+      "Expression": "SalesTotal == Quantity * Amount",
+      "Message": "Sales total must equal Quantity × Amount"
+    },
+    {
+      "Name": "DiscountEquation",
+      "Level": "InvoiceLine",
+      "Expression": "DiscountAmount == DiscountRate * SalesTotal",
+      "Condition": "DiscountRate > 0",
+      "Message": "Discount amount must equal DiscountRate × SalesTotal when DiscountRate > 0"
+    },
+    {
+      "Name": "NetTotalEquation",
+      "Level": "InvoiceLine",
+      "Expression": "NetTotal == SalesTotal - DiscountAmount",
+      "Message": "Net total must equal SalesTotal - DiscountAmount"
+    },
+    {
+      "Name": "TaxableItemEquation",
+      "Level": "InvoiceLine",
+      "Expression": "TaxableItem.Amount == TaxableItem.Rate * NetTotal",
+      "Condition": "TaxableItem.Rate > 0",
+      "Message": "Taxable item amount must equal Rate × NetTotal when Rate > 0"
+    },
+    {
+      "Name": "TotalTaxableFeesEquation",
+      "Level": "InvoiceLine",
+      "Expression": "TotalTaxableFees == SUM(TaxableItems.Amount)",
+      "Message": "TotalTaxableFees must equal the sum of all taxable item amounts"
+    },
+    {
+      "Name": "NonTaxableItemEquation",
+      "Level": "InvoiceLine",
+      "Expression": "NonTaxableItem.Amount == NonTaxableItem.Rate * NetTotal",
+      "Condition": "NonTaxableItem.Rate > 0",
+      "Message": "Non-taxable item amount must equal Rate × NetTotal when Rate > 0"
+    },
+    {
+      "Name": "TotalNonTaxableFeesEquation",
+      "Level": "InvoiceLine",
+      "Expression": "TotalNonTaxableFees == SUM(NonTaxableItems.Amount)",
+      "Message": "TotalNonTaxableFees must equal the sum of all non-taxable item amounts"
+    },
+    {
+      "Name": "TableTaxPercentageEquation",
+      "Level": "InvoiceLine",
+      "Expression": "TaxableItems.T2.Amount == (NetTotal + TotalTaxableFees + ValueDifference + TaxableItems.T3.Amount) * TaxableItems.T2.Rate",
+      "Message": "T2 tax amount must equal (NetTotal + TotalTaxableFees + ValueDifference + T3.Amount) × T2.Rate"
+    },
+    {
+      "Name": "TableTaxFixedEquation",
+      "Level": "InvoiceLine",
+      "Expression": "TaxableItems.T3.Rate == 0",
+      "Message": "T3 tax rate must always be zero (fixed amount tax)"
+    },
+    {
+      "Name": "StampingTaxEquation",
+      "Level": "InvoiceLine",
+      "Expression": "TaxableItems.T6.Rate == 0",
+      "Message": "T6 stamping tax rate must always be zero (fixed amount tax)"
+    },
+    {
+      "Name": "VATEquation",
+      "Level": "InvoiceLine",
+      "Expression": "TaxableItems.T1.Amount == (NetTotal + TotalTaxableFees + ValueDifference + TaxableItems.T3.Amount) * TaxableItems.T1.Rate",
+      "Message": "VAT (T1) amount must equal (NetTotal + TotalTaxableFees + ValueDifference + T3.Amount) × T1.Rate"
+    },
+    {
+      "Name": "WithholdingTaxEquation",
+      "Level": "InvoiceLine",
+      "Expression": "TaxableItems.WHTT4.Amount == TaxableItems.WHTT4.Rate * (NetTotal - ItemsDiscount)",
+      "Message": "Withholding tax (WHT T4) must equal Rate × (NetTotal - ItemsDiscount)"
+    },
+    {
+      "Name": "TotalLineEquation",
+      "Level": "InvoiceLine",
+      "Expression": "LineTotal == NetTotal + TotalTaxableFees + TotalNonTaxableFees - ItemsDiscount - SUM(WHTItems.Amount)",
+      "Message": "Line total must equal NetTotal + TotalTaxableFees + TotalNonTaxableFees - ItemsDiscount - sum of WHT items"
+    },
+
+    {
+      "Name": "TotalSalesAmountEquation",
+      "Level": "Invoice",
+      "Expression": "TotalSalesAmount == SUM(InvoiceLines.SalesTotal)",
+      "Message": "TotalSalesAmount must equal sum of all invoice line SalesTotal"
+    },
+    {
+      "Name": "TotalItemDiscountEquation",
+      "Level": "Invoice",
+      "Expression": "TotalItemDiscount == SUM(InvoiceLines.ItemDiscount)",
+      "Message": "TotalItemDiscount must equal sum of all invoice line item discounts"
+    },
+    {
+      "Name": "NetAmountEquation",
+      "Level": "Invoice",
+      "Expression": "NetAmount == SUM(InvoiceLines.NetTotal)",
+      "Message": "NetAmount must equal sum of all invoice line NetTotal values"
+    },
+    {
+      "Name": "TotalItemsDiscountAmountEquation",
+      "Level": "Invoice",
+      "Expression": "TotalItemsDiscountAmount == SUM(InvoiceLines.ItemsDiscount)",
+      "Message": "TotalItemsDiscountAmount must equal sum of all line item discounts"
+    },
+    {
+      "Name": "TotalAmountEquation",
+      "Level": "Invoice",
+      "Expression": "TotalAmount == SUM(InvoiceLines.Total) - ExtraDiscountAmount",
+      "Message": "TotalAmount must equal sum of all line totals minus ExtraDiscountAmount"
+    },
+    {
+      "Name": "ExtraDiscountEquation",
+      "Level": "Invoice",
+      "Expression": "ExtraDiscountAmount == Value",
+      "Message": "Extra discount must match the declared value"
+    },
+    {
+      "Name": "TaxableFeesTotalEquation",
+      "Level": "Invoice",
+      "Expression": "TaxTotalsTaxable == SUM(TaxableItems.Amount)",
+      "Message": "Total taxable fees must equal the sum of all taxable items (T1–T12)"
+    },
+    {
+      "Name": "NonTaxableFeesTotalEquation",
+      "Level": "Invoice",
+      "Expression": "TaxTotalsNonTaxable == SUM(NonTaxableItems.Amount)",
+      "Message": "Total non-taxable fees must equal the sum of all non-taxable items (T13–T20)"
+    }
+  ]
+}

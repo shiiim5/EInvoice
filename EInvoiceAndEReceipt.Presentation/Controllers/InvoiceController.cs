@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Antlr.Runtime;
 using EInvoiceAndEReceipt.Application.IServices;
 using EInvoiceAndEReceipt.Application.Services;
 using EInvoiceAndEReceipt.Data.DTOs;
@@ -22,28 +23,46 @@ namespace EInvoiceAndEReceipt.Presentation.Controllers
             _invoiceService = invoiceService;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetInvoices()
+        {
+            var invoices = await _invoiceService.GetInvoices();
+            return Ok(invoices);
 
+        }
+
+        [Consumes("application/json", "application/xml", "text/xml")]
+        [Produces("application/json")]
         [HttpPost("documentsubmissions")]
-        public async Task<IActionResult> SubmitDocumentsAsync(List<DocumentDTO> invoices)
+        public async Task<IActionResult> SubmitDocumentsAsync([FromBody] List<DocumentDTO> body)
         {
             try
             {
+                if (body == null || body.Count == 0)
+                    return BadRequest("No documents submitted");
 
                 var contentType = Request.ContentType ?? "application/json";
-                var result = await _invoiceService.SubmitDocumentsAsync(contentType, Request.Body);
+                var result = await _invoiceService.SubmitDocumentsAsync(contentType, ToStream(body));
                 return Ok(
-new
-{
-    Message = "Documents processed sucessfully",
-    AcceptedDocumentsIds = result.AcceptedDocumentsIds,
-    AcceptedDocuments = result.AcceptedDocuments.Select(d => d.InternalId)
-}
+                             new
+                             {
+                                 Message = "Documents processed successfully",
+                                 SubmissionUUID = result.SubmissionUUID,
+                                 AcceptedDocuments = result.AcceptedDocuments,
+                                 AcceptedDocumentsIds = result.AcceptedDocuments.Select(d => d.InternalId)
+                             }
                 );
 
             }
             catch (Exception ex)
             {
-                return BadRequest();
+                Console.WriteLine($"Error submitting documents: {ex.Message}");
+
+                return BadRequest(new
+                {
+                    Message = "Failed to process document submission.",
+                    Error = ex.Message
+                });
             }
         }
 
@@ -54,12 +73,41 @@ new
             {
                 await _invoiceService.CancelDocumentAsync(uuid);
                 return Ok(new { Message = "Document cancelled successfully" });
-                
-            }catch(Exception ex)
+
+
+
+            }
+            catch (Exception ex)
             {
                 return BadRequest();
             }
         }
 
+        [HttpPut("documents/state/{UUID}/state")]
+        public async Task<IActionResult> UpdateDocumentAsync(string uuid)
+        {
+            try
+            {
+                await _invoiceService.CancelDocumentAsync(uuid);
+                return Ok(new { Message = "Document cancelled successfully" });
+
+
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+
+
+
+        private static Stream ToStream(List<DocumentDTO> obj)
+        {
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(obj);
+            var stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(json));
+            stream.Position = 0;
+            return stream;
+        }
     }
 }

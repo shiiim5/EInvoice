@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using EInvoiceAndEReceipt.Data.DbContext;
@@ -23,9 +24,16 @@ namespace EInvoiceAndEReceipt.Data.Repositories
             await _context.Invoices.AddRangeAsync(invoices);
             await _context.SaveChangesAsync();
             return new List<Invoice>(invoices);
-          
+
+
 
         }
+
+        public async Task<List<Invoice>> GetAllInvoices()
+        {
+            var invoices =  _context.Invoices.ToList();
+            return invoices;
+        } 
 
         public async Task<bool> ExistsAsync(string InvoiceId)
         {
