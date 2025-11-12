@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EInvoiceAndEReceipt.Data.DTOs;
 using EInvoiceAndEReceipt.Data.Entities;
 
 namespace EInvoiceAndEReceipt.Data.IRepositories
@@ -12,5 +13,7 @@ namespace EInvoiceAndEReceipt.Data.IRepositories
         public Task<List<Invoice>> AddDocumentsAsync(IEnumerable<Invoice> invoices);
 
         public Task<List<Invoice>> GetAllInvoices();
+        public Task<Invoice> GetInvoiceByIDAsync(string id);
+        public Task<bool> UpdateInvoiceAsync(DocumentDTO document);
     }
 }

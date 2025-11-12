@@ -33,7 +33,7 @@ namespace EInvoiceAndEReceipt.Application.Services
             _validator = validator;
             // _pipeline = pipeline;
         }
-public async Task<List<Invoice>> GetInvoices()
+       public async Task<List<Invoice>> GetInvoices()
         {
             var invoices = await _repository.GetAllInvoices();
             return invoices;
@@ -169,6 +169,12 @@ public async Task<List<Invoice>> GetInvoices()
             return result;
         }
 
+        public async Task<bool> UpdateDocumentAsync(DocumentDTO document)
+        {
+            var result = await _repository.UpdateInvoiceAsync(document);
+
+            return result;
+        }
         private async Task<List<DocumentDTO>> SerializeToDocuments(string contentType, Stream stream)
         {
             try
@@ -216,7 +222,7 @@ public async Task<List<Invoice>> GetInvoices()
             }
         }
 
-
+          
     }
 }
 

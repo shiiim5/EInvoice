@@ -12,6 +12,7 @@ namespace EInvoiceAndEReceipt.Application.IServices
     {
         public Task<InvoiceProcessingResult> SubmitDocumentsAsync(string contentType, Stream stream);
         public Task CancelDocumentAsync(string uuid);
+        public Task<bool> UpdateDocumentAsync(DocumentDTO document);
         public Task<List<Invoice>> GetInvoices();
          
     }

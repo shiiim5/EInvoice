@@ -1,1 +1,21 @@
 Get http://localhost:5057/api/v1.0/invoice
+
+###
+POST  http://localhost:5057/api/Authentication/login
+Content-Type: application/json
+
+{
+    "Email": "admin",
+    "Password": "Admin@12345"
+}
+
+###
+POST  http://localhost:5057/api/Authentication/register
+Content-Type: application/json
+
+{
+    "Email": "admin",
+    "Password": "Admin@12345", 
+    "Name": "ABC"
+}
+

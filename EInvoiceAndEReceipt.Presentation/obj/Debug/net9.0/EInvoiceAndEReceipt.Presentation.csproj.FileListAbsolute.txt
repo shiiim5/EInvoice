@@ -147,3 +147,12 @@
 /home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Presentation/bin/Debug/net9.0/AutoMapper.dll
 /home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Presentation/bin/Debug/net9.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 /home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Presentation/bin/Debug/net9.0/NCalc.dll
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Presentation/bin/Debug/net9.0/Microsoft.IdentityModel.Abstractions.dll
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Presentation/bin/Debug/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Presentation/bin/Debug/net9.0/Microsoft.IdentityModel.Logging.dll
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Presentation/bin/Debug/net9.0/Microsoft.IdentityModel.Tokens.dll
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Presentation/bin/Debug/net9.0/System.IdentityModel.Tokens.Jwt.dll
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Presentation/bin/Debug/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Presentation/bin/Debug/net9.0/Microsoft.IdentityModel.Protocols.dll
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Presentation/bin/Debug/net9.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/home/shimaa/Projects/dotnet/EgyptianEInvoicingAndEReceipt/EInvoiceAndEReceipt.Presentation/bin/Debug/net9.0/BCrypt.Net-Core.dll

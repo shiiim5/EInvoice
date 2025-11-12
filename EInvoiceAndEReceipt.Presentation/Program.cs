@@ -1,20 +1,42 @@
-using AutoMapper;
-using EInvoiceAndEReceipt.Application.IServices;
-using EInvoiceAndEReceipt.Application.Services;
+using System.Text;
+using EInvoiceAndEReceipt.Application;
+
 using EInvoiceAndEReceipt.Data.Configuration;
 using EInvoiceAndEReceipt.Data.DbContext;
-using EInvoiceAndEReceipt.Data.IRepositories;
-using EInvoiceAndEReceipt.Data.Repositories;
-using EInvoiceAndEReceipt.Data.Validations;
+
 using EInvoiceAndEReceipt.Data.Validations.PipelineValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
+//Authentication Configuration
+var jwtSettings = builder.Configuration.GetSection("Jwt");
+var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
+
+builder.Services.AddAuthentication(op =>
+{
+    op.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    op.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = jwtSettings["Issuer"],
+        ValidAudience = jwtSettings["Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(key)
+    };
+});
+
+builder.Services.AddAuthorization();
 builder.Services.AddOpenApi();
 
 builder.Services.AddControllers()
@@ -24,27 +46,19 @@ builder.Services.AddControllers()
 builder.Services.Configure<ETAConfig>(
     builder.Configuration.GetSection("EtaValidation")
 );
-
-builder.Services.AddSingleton(resolver =>
-    resolver.GetRequiredService<IOptions<ETAConfig>>().Value);
+builder.Services.AddHttpClient<ETIDASignatureVerificationAdapter>();
 
 //Dependency Injection
-builder.Services.AddScoped<IInvoiceService, InvoiceService>();
-builder.Services.AddScoped<IInvoiceRepository, InvoiceRepository>();
-builder.Services.AddHttpClient<ETIDASignatureVerificationAdapter>();
-builder.Services.AddSingleton<ISignatureVerificationAdapter, ETIDASignatureVerificationAdapter>();
-// builder.Services.AddScoped<IDocumentValidator, CoreFieldsValidation>();
-// builder.Services.AddScoped<IDocumentValidator, SignatureValidation>();
-// builder.Services.AddScoped<IDocumentValidator, NationalIdValidation>();
-// builder.Services.AddScoped<IDocumentValidator, SimpleFieldValidation>();
-builder.Services.AddScoped<DocumentValidationPipeline>();
-builder.Services.AddScoped<IDocumentValidator, EquationValidation>();
+builder.Services.AddApplication();
+builder.Services.AddData();
+
 
 
 
 //Database Connection
 builder.Services.AddDbContext<EInvoiceDbContext>(options =>
 options.UseNpgsql(builder.Configuration.GetConnectionString("conn")));
+
 
 //swagger
 builder.Services.AddEndpointsApiExplorer();
@@ -55,7 +69,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(MappingConfig));
 
 
+
+
 var app = builder.Build();
+
 
 app.MapControllers();
 
@@ -69,8 +86,14 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
 
 
 
 app.Run();
+
+
+
+
 

@@ -35,5 +35,6 @@ namespace EInvoiceAndEReceipt.Data.DbContext
          public DbSet<TaxableItem> TaxableItems { get; set; }
          public DbSet<TaxTotal> TaxTotals { get; set; }
          public DbSet<Value> Values { get; set; }
+         public DbSet<TaxPayer> TaxPayers { get; set; }
     }
 }

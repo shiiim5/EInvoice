@@ -449,6 +449,31 @@ namespace EInvoiceAndEReceipt.Data.Migrations
                     b.ToTable("Signatures");
                 });
 
+            modelBuilder.Entity("EInvoiceAndEReceipt.Data.Entities.TaxPayer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TaxPayers");
+                });
+
             modelBuilder.Entity("EInvoiceAndEReceipt.Data.Entities.TaxTotal", b =>
                 {
                     b.Property<int>("_Id")

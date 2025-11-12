@@ -83,16 +83,13 @@ namespace EInvoiceAndEReceipt.Presentation.Controllers
             }
         }
 
-        [HttpPut("documents/state/{UUID}/state")]
-        public async Task<IActionResult> UpdateDocumentAsync(string uuid)
+        [HttpPut("documents/update")]
+        public async Task<IActionResult> UpdateDocumentAsync(DocumentDTO document)
         {
             try
             {
-                await _invoiceService.CancelDocumentAsync(uuid);
-                return Ok(new { Message = "Document cancelled successfully" });
-
-
-
+                await _invoiceService.UpdateDocumentAsync(document);
+                return Ok(new { Message = "Document updated successfully" });
             }
             catch (Exception ex)
             {
