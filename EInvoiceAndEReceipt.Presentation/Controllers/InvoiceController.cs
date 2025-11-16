@@ -66,15 +66,16 @@ namespace EInvoiceAndEReceipt.Presentation.Controllers
             }
         }
 
-        [HttpPut("documents/state/{UUID}/state")]
-        public async Task<IActionResult> CancelDocumentAsync(string uuid)
+        [HttpPut("documents/cancel")]
+        public async Task<IActionResult> CancelDocumentAsync(string internalId)
         {
             try
             {
-                await _invoiceService.CancelDocumentAsync(uuid);
-                return Ok(new { Message = "Document cancelled successfully" });
-
-
+                var result = await _invoiceService.CancelDocumentAsync(internalId);
+                if (result)
+                    return Ok(new { Message = "Document cancelled successfully" });
+                else
+                    return BadRequest("Failed to cancel document");
 
             }
             catch (Exception ex)

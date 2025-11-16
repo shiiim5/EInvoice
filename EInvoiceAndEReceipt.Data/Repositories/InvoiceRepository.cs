@@ -62,5 +62,19 @@ namespace EInvoiceAndEReceipt.Data.Repositories
 
             return true;
         }
+
+        public async Task<bool> CancelDocumentAsync(string internalId)
+        {
+            var existing = await _context.Invoices.FirstOrDefaultAsync(i => i.InternalId == internalId);
+            if (existing is null)
+                return false;
+
+            existing.Status = "Cancelled";
+            _context.Invoices.Update(existing);
+            _context.SaveChangesAsync();
+
+            return true;
+
+        }
     }
 }

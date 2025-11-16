@@ -107,18 +107,10 @@ namespace EInvoiceAndEReceipt.Application.Services
 
         // }
 
-        public async Task CancelDocumentAsync(string uuid)
+        public async Task<bool> CancelDocumentAsync(string internalId)
         {
-            var exists = await _repository.ExistsAsync(uuid);
-            if (!exists)
-            {
-                throw new Exception("Invoice not found");
-            }
-            else
-            {
-
-            }
-
+            var result = await _repository.CancelDocumentAsync(internalId);
+            return result;
         }
 
         public async Task<InvoiceProcessingResult> SubmitDocumentsAsync(string contentType, Stream stream)

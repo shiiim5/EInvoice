@@ -15,5 +15,6 @@ namespace EInvoiceAndEReceipt.Data.IRepositories
         public Task<List<Invoice>> GetAllInvoices();
         public Task<Invoice> GetInvoiceByIDAsync(string id);
         public Task<bool> UpdateInvoiceAsync(DocumentDTO document);
+        public Task<bool> CancelDocumentAsync(string internalId);
     }
 }

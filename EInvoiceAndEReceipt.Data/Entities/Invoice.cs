@@ -39,6 +39,7 @@ namespace EInvoiceAndEReceipt.Data.Entities
         public Decimal TotalAmount { get; set; }
         public List<Signature> Signatures { get; set; } = new List<Signature>();
         public DateTime? ServiceDeliveryDate { get; set; }
+        public string Status { get; set; } = "Valid";
 
     }
 }
