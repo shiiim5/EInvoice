@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EInvoiceAndEReceipt.Data.Migrations
 {
     [DbContext(typeof(EInvoiceDbContext))]
-    [Migration("20251112102115_auth")]
-    partial class auth
+    [Migration("20251117111001_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -139,6 +139,10 @@ namespace EInvoiceAndEReceipt.Data.Migrations
 
                     b.Property<DateTime?>("ServiceDeliveryDate")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("TaxpayerActivityCode")
                         .IsRequired()
@@ -426,6 +430,23 @@ namespace EInvoiceAndEReceipt.Data.Migrations
                     b.ToTable("ReceiverAddresses");
                 });
 
+            modelBuilder.Entity("EInvoiceAndEReceipt.Data.Entities.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+                });
+
             modelBuilder.Entity("EInvoiceAndEReceipt.Data.Entities.Signature", b =>
                 {
                     b.Property<int>("_Id")
@@ -450,31 +471,6 @@ namespace EInvoiceAndEReceipt.Data.Migrations
                     b.HasIndex("Invoice_Id");
 
                     b.ToTable("Signatures");
-                });
-
-            modelBuilder.Entity("EInvoiceAndEReceipt.Data.Entities.TaxPayer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TaxPayers");
                 });
 
             modelBuilder.Entity("EInvoiceAndEReceipt.Data.Entities.TaxTotal", b =>
@@ -532,6 +528,36 @@ namespace EInvoiceAndEReceipt.Data.Migrations
                     b.HasIndex("InvoiceLine_Id");
 
                     b.ToTable("TaxableItems");
+                });
+
+            modelBuilder.Entity("EInvoiceAndEReceipt.Data.Entities.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int?>("RoleId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("EInvoiceAndEReceipt.Data.Entities.Value", b =>
@@ -655,6 +681,15 @@ namespace EInvoiceAndEReceipt.Data.Migrations
                         .HasForeignKey("InvoiceLine_Id");
                 });
 
+            modelBuilder.Entity("EInvoiceAndEReceipt.Data.Entities.User", b =>
+                {
+                    b.HasOne("EInvoiceAndEReceipt.Data.Entities.Role", "Role")
+                        .WithMany("Users")
+                        .HasForeignKey("RoleId");
+
+                    b.Navigation("Role");
+                });
+
             modelBuilder.Entity("EInvoiceAndEReceipt.Data.Entities.Invoice", b =>
                 {
                     b.Navigation("InvoiceLines");
@@ -667,6 +702,11 @@ namespace EInvoiceAndEReceipt.Data.Migrations
             modelBuilder.Entity("EInvoiceAndEReceipt.Data.Entities.InvoiceLine", b =>
                 {
                     b.Navigation("TaxableItems");
+                });
+
+            modelBuilder.Entity("EInvoiceAndEReceipt.Data.Entities.Role", b =>
+                {
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

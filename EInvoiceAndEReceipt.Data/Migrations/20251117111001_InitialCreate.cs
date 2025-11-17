@@ -110,6 +110,19 @@ namespace EInvoiceAndEReceipt.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Roles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    RoleName = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Roles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Values",
                 columns: table => new
                 {
@@ -170,6 +183,27 @@ namespace EInvoiceAndEReceipt.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Email = table.Column<string>(type: "text", nullable: false),
+                    PasswordHash = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    RoleId = table.Column<int>(type: "integer", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_Roles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "Roles",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Invoices",
                 columns: table => new
                 {
@@ -195,7 +229,8 @@ namespace EInvoiceAndEReceipt.Data.Migrations
                     ExtraDiscountAmount = table.Column<decimal>(type: "numeric", nullable: false),
                     TotalItemsDiscountAmount = table.Column<decimal>(type: "numeric", nullable: false),
                     TotalAmount = table.Column<decimal>(type: "numeric", nullable: false),
-                    ServiceDeliveryDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                    ServiceDeliveryDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    Status = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -388,6 +423,11 @@ namespace EInvoiceAndEReceipt.Data.Migrations
                 name: "IX_TaxTotals_Invoice_Id",
                 table: "TaxTotals",
                 column: "Invoice_Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_RoleId",
+                table: "Users",
+                column: "RoleId");
         }
 
         /// <inheritdoc />
@@ -406,7 +446,13 @@ namespace EInvoiceAndEReceipt.Data.Migrations
                 name: "TaxTotals");
 
             migrationBuilder.DropTable(
+                name: "Users");
+
+            migrationBuilder.DropTable(
                 name: "InvoiceLines");
+
+            migrationBuilder.DropTable(
+                name: "Roles");
 
             migrationBuilder.DropTable(
                 name: "Discounts");
